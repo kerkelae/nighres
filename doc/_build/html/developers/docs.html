@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adapting the docs &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Making a Pull Request" href="pr.html" />
+    <link rel="prev" title="Writing examples" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Writing examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adapting the docs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-changed-an-existing-function">If you changed an existing function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-added-a-new-function">If you added a new function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if-you-added-a-new-submodule">If you added a new submodule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-than-docstrings">More than docstrings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-docs-locally">Building the docs locally</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Adapting the docs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developers/docs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adapting-the-docs">
+<span id="adapt-docs"></span><h1>Adapting the docs<a class="headerlink" href="#adapting-the-docs" title="Permalink to this headline">¶</a></h1>
+<p>Nighres uses <a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> which makes it easy to automatically pull the docstrings of functions into the online documentation. This means once a function has a good docstring, the work is essentially done. It also means that writing great docstrings is important.</p>
+<div class="section" id="if-you-changed-an-existing-function">
+<h2>If you changed an existing function<a class="headerlink" href="#if-you-changed-an-existing-function" title="Permalink to this headline">¶</a></h2>
+<p>Make sure to check if your changes also require changes in the docstring. Adapting an existing docstring is usually straightforward. If you are curious how your changes will look in the online docs, you can try out <a class="reference internal" href="#build-docs"><span class="std std-ref">Building the docs locally</span></a>.</p>
+</div>
+<div class="section" id="if-you-added-a-new-function">
+<span id="newfunc-docs"></span><h2>If you added a new function<a class="headerlink" href="#if-you-added-a-new-function" title="Permalink to this headline">¶</a></h2>
+<p>Make sure to write a comprehensive docstring. We use <a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt#docstring-standard">NumPy/SciPy docstring</a> conventions. But the easiest is to just copy another function’s docstring and adapt. Then you need to add a few things to the <code class="docutils literal notranslate"><span class="pre">nighres/doc</span></code> directory:</p>
+<ol class="arabic simple">
+<li>Go to the subdirectory which refers to the submodule you added a function to, e.g. <code class="docutils literal notranslate"><span class="pre">nighres/doc/laminar/</span></code>.</li>
+<li>Create a new file named after your new function, e.g. <em>laminar_connectivity.rst</em></li>
+<li>Add the name of this file in the <em>index.rst</em> file of the submodule</li>
+<li>Copy the content of another function’s rst file inside of your new file</li>
+<li>Adapt the title and the two mentions of the function name in your new file to match your new function</li>
+<li>Submit the changes to the docs along with your PR</li>
+</ol>
+<p>Again, you can check how the changes you made will look in the online documentation by <a class="reference internal" href="#build-docs"><span class="std std-ref">Building the docs locally</span></a>.</p>
+</div>
+<div class="section" id="if-you-added-a-new-submodule">
+<h2>If you added a new submodule<a class="headerlink" href="#if-you-added-a-new-submodule" title="Permalink to this headline">¶</a></h2>
+<p>This is going to be a rare case. But if indeed added a new submodule in your PR, say its called <em>nighres.fancypants</em>:</p>
+<ol class="arabic simple">
+<li>In the doc directory, add a new subdirectory for your new module, e.g. <code class="docutils literal notranslate"><span class="pre">nighres/doc/fancypants</span></code></li>
+<li>In that subdirectory make a file called <em>index.rst</em>. Best to just copy the index.rst from another submodule. Then adapt the title in the file to the name of your new submodule, and remove all function names in the toctree.</li>
+<li>Follow steps 3 to 5 from <a class="reference internal" href="#newfunc-docs"><span class="std std-ref">If you added a new function</span></a> to add all functions of your new submodule</li>
+<li>Add your submodule in the <em>index.rst</em> file in the <code class="docutils literal notranslate"><span class="pre">nighres/doc</span></code> main directory under the “Modules and Functions” toctree. In our case we would add the line <em>fancypants/index</em></li>
+<li>Submit the changes to the docs along with your PR</li>
+</ol>
+</div>
+<div class="section" id="more-than-docstrings">
+<h2>More than docstrings<a class="headerlink" href="#more-than-docstrings" title="Permalink to this headline">¶</a></h2>
+<p>You can also make changes to parts of the documentation that are not function docstrings. For example to help improving this guide!</p>
+<p>The easiest way is to browse to the page in the <a class="reference external" href="http://nighres.readthedocs.io/en/latest/">online documentation</a> that you want to change and click on <strong>Edit on Github</strong> to find the location of the file you have to change. For example, if you want to make a change to this page, the link would send you to <a class="reference external" href="https://github.com/nighres/nighres/blob/master/doc/developers/docs.rst">https://github.com/nighres/nighres/blob/master/doc/developers/docs.rst</a>, which tells you that in your local copy of the repo you should edit the file <em>nighres/doc/developers/docs.rst</em>.</p>
+<p>Sphinx uses reStructuredText (reST) syntax. For formatting take a look at this <a class="reference external" href="http://matplotlib.org/sampledoc/cheatsheet.html">Sphinx Cheatsheet</a>.</p>
+<p>You can also add whole new parts to the online documentation. This might require learning a bit more about <a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>. You can also open an <a class="reference external" href="https://github.com/nighres/nighres/issues">issue</a> and get help.</p>
+<p>When you are done, you can check your changes by <a class="reference internal" href="#build-docs"><span class="std std-ref">Building the docs locally</span></a>.</p>
+</div>
+<div class="section" id="building-the-docs-locally">
+<span id="build-docs"></span><h2>Building the docs locally<a class="headerlink" href="#building-the-docs-locally" title="Permalink to this headline">¶</a></h2>
+<p>If you make changes to the documentation, they will only appear online at <a class="reference external" href="http://nighres.readthedocs.io/en/latest/">http://nighres.readthedocs.io/en/latest/</a> once your PR has been merged and a new release was made. You can, however, build the docs locally for a preview:</p>
+<ol class="arabic simple">
+<li>Make sure to have all <a class="reference internal" href="../installation.html#add-deps"><span class="std std-ref">additional dependencies</span></a> installed that you need to build the documentation</li>
+<li>Navigate into your local copy of <code class="docutils literal notranslate"><span class="pre">nighres/doc</span></code></li>
+<li>Type <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> and then <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">html</span></code></li>
+<li>Open an Internet browser and point it to the local html pages that were just built for you, e.g. <a class="reference external" href="file:///home/nighres/doc/_build/html/index.html">file:///home/nighres/doc/_build/html/index.html</a></li>
+</ol>
+<p>You can make changes and repeat this process until you are satisfied.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pr.html" class="btn btn-neutral float-right" title="Making a Pull Request" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="examples.html" class="btn btn-neutral float-left" title="Writing examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nighres.filtering.recursive_ridge_diffusion &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>nighres.filtering.recursive_ridge_diffusion</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for nighres.filtering.recursive_ridge_diffusion</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">nighresjava</span>
+<span class="kn">from</span> <span class="nn">..io</span> <span class="k">import</span> <span class="n">load_volume</span><span class="p">,</span> <span class="n">save_volume</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">_output_dir_4saving</span><span class="p">,</span> <span class="n">_fname_4saving</span><span class="p">,</span> \
+                    <span class="n">_check_topology_lut_dir</span><span class="p">,</span> <span class="n">_check_atlas_file</span><span class="p">,</span> \
+                    <span class="n">_check_available_memory</span>
+
+
+<div class="viewcode-block" id="recursive_ridge_diffusion"><a class="viewcode-back" href="../../../filtering/recursive_ridge_diffusion.html#nighres.filtering.recursive_ridge_diffusion">[docs]</a><span class="k">def</span> <span class="nf">recursive_ridge_diffusion</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">ridge_intensities</span><span class="p">,</span> <span class="n">ridge_filter</span><span class="p">,</span>
+                              <span class="n">surface_levelset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;undefined&#39;</span><span class="p">,</span>
+                              <span class="n">loc_prior</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                              <span class="n">min_scale</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_scale</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                              <span class="n">diffusion_factor</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                              <span class="n">similarity_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                              <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_diff</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+                              <span class="n">save_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                              <span class="n">file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; Recursive Ridge Diffusion</span>
+
+<span class="sd">    Extracts planar of tubular structures across multiple scales, with an</span>
+<span class="sd">    optional directional bias.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input_image: niimg</span>
+<span class="sd">        Input image</span>
+<span class="sd">    ridge_intensities: {&#39;bright&#39;,&#39;dark&#39;,&#39;both&#39;}</span>
+<span class="sd">        Which intensities to consider for the filtering</span>
+<span class="sd">    ridge_filter: {&#39;2D&#39;,&#39;1D&#39;,&#39;0D&#39;}</span>
+<span class="sd">        Whether to filter for 2D ridges, 1D vessels, or 0D holes</span>
+<span class="sd">    surface_levelset: niimg, optional</span>
+<span class="sd">        Level set surface to restrict the orientation of the detected features</span>
+<span class="sd">    orientation: {&#39;undefined&#39;,&#39;parallel&#39;,&#39;orthogonal&#39;}</span>
+<span class="sd">        The orientation of features to keep with regard to the surface or its normal</span>
+<span class="sd">    loc_prior: niimg, optional</span>
+<span class="sd">        Location prior image to restrict the search for features</span>
+<span class="sd">    min_scale: int</span>
+<span class="sd">        Minimum scale (in voxels) to look for features (default is 0)</span>
+<span class="sd">    max_scale: int</span>
+<span class="sd">        Maximum scale (in voxels) to look for features (default is 3)</span>
+<span class="sd">    diffusion_factor: float</span>
+<span class="sd">        Scaling factor for the diffusion weighting in [0,1] (default is 1.0)</span>
+<span class="sd">    similarity_scale: float</span>
+<span class="sd">        Scaling of the similarity function as a factor of intensity range</span>
+<span class="sd">    max_iter: int</span>
+<span class="sd">        Maximum number of diffusion iterations</span>
+<span class="sd">    max_diff: int</span>
+<span class="sd">        Maximum difference to stop the diffusion</span>
+<span class="sd">    save_data: bool</span>
+<span class="sd">        Save output data to file (default is False)</span>
+<span class="sd">    overwrite: bool</span>
+<span class="sd">        Overwrite existing results (default is False)</span>
+<span class="sd">    output_dir: str, optional</span>
+<span class="sd">        Path to desired output directory, will be created if it doesn&#39;t exist</span>
+<span class="sd">    file_name: str, optional</span>
+<span class="sd">        Desired base name for output files with file extension</span>
+<span class="sd">        (suffixes will be added)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Dictionary collecting outputs under the following keys</span>
+<span class="sd">        (suffix of output files in brackets)</span>
+
+<span class="sd">        * filter (niimg): raw filter response (_rrd-filter)</span>
+<span class="sd">        * propagation (niimg): propagated probabilistic response after diffusion (_rrd-propag)</span>
+<span class="sd">        * scale (niimg): scale of the detection filter  (_rrd-scale)</span>
+<span class="sd">        * ridge_dir (niimg): estimated local ridge direction (_rrd-dir)</span>
+<span class="sd">        * ridge_pv (niimg): ridge partial volume map, taking size into account (_rrd-pv)</span>
+<span class="sd">        * ridge_size (niimg): estimated size of each detected component (rrd-size)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Original Java module by Pierre-Louis Bazin. Extension of the recursive ridge</span>
+<span class="sd">    filter in [1]_.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Bazin et al (2016), Vessel segmentation from quantitative</span>
+<span class="sd">           susceptibility maps for local oxygenation venography, Proc ISBI.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> Recursive Ridge Diffusion&#39;</span><span class="p">)</span>
+
+    <span class="c1"># check atlas_file and set default if not given</span>
+    <span class="c1">#atlas_file = _check_atlas_file(atlas_file)</span>
+
+    <span class="c1"># make sure that saving related parameters are correct</span>
+    <span class="k">if</span> <span class="n">save_data</span><span class="p">:</span>
+        <span class="n">output_dir</span> <span class="o">=</span> <span class="n">_output_dir_4saving</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">input_image</span><span class="p">)</span>
+
+        <span class="n">filter_file</span> <span class="o">=</span> <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                  <span class="n">rootfile</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span>
+                                  <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;rrd-filter&#39;</span><span class="p">)</span>
+
+        <span class="n">propagation_file</span> <span class="o">=</span> <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                   <span class="n">rootfile</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span>
+                                   <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;rrd-propag&#39;</span><span class="p">)</span>
+
+        <span class="n">scale_file</span> <span class="o">=</span> <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                   <span class="n">rootfile</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span>
+                                   <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;rrd-scale&#39;</span><span class="p">)</span>
+
+        <span class="n">ridge_direction_file</span> <span class="o">=</span> <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                  <span class="n">rootfile</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span>
+                                  <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;rrd-dir&#39;</span><span class="p">)</span>
+
+        <span class="n">ridge_pv_file</span> <span class="o">=</span> <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                  <span class="n">rootfile</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span>
+                                  <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;rrd-pv&#39;</span><span class="p">)</span>
+
+        <span class="n">ridge_size_file</span> <span class="o">=</span> <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                  <span class="n">rootfile</span><span class="o">=</span><span class="n">input_image</span><span class="p">,</span>
+                                  <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;rrd-size&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">overwrite</span> <span class="ow">is</span> <span class="kc">False</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filter_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">propagation_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">scale_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">ridge_direction_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">ridge_pv_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">ridge_size_file</span><span class="p">)</span> <span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;skip computation (use existing results)&quot;</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">filter_file</span><span class="p">),</span>
+                      <span class="s1">&#39;propagation&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">propagation_file</span><span class="p">),</span>
+                      <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">scale_file</span><span class="p">),</span>
+                      <span class="s1">&#39;ridge_dir&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">ridge_direction_file</span><span class="p">),</span>
+                      <span class="s1">&#39;ridge_pv&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">ridge_pv_file</span><span class="p">),</span>
+                      <span class="s1">&#39;ridge_size&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">ridge_size_file</span><span class="p">)}</span>
+            <span class="k">return</span> <span class="n">output</span>
+
+
+    <span class="c1"># load input image and use it to set dimensions and resolution</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">affine</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">header</span>
+    <span class="n">resolution</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">header</span><span class="o">.</span><span class="n">get_zooms</span><span class="p">()]</span>
+    <span class="n">dimensions</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">):</span> <span class="n">dimensions</span> <span class="o">=</span> <span class="p">(</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">resolution</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">):</span> <span class="n">resolution</span> <span class="o">=</span> <span class="p">[</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">1.0</span><span class="p">]</span>
+
+    <span class="c1"># start virtual machine, if not already running</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mem</span> <span class="o">=</span> <span class="n">_check_available_memory</span><span class="p">()</span>
+        <span class="n">nighresjava</span><span class="o">.</span><span class="n">initVM</span><span class="p">(</span><span class="n">initialheap</span><span class="o">=</span><span class="n">mem</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">],</span> <span class="n">maxheap</span><span class="o">=</span><span class="n">mem</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="c1"># create extraction instance</span>
+    <span class="k">if</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">:</span> <span class="n">rrd</span> <span class="o">=</span> <span class="n">nighresjava</span><span class="o">.</span><span class="n">FilterRecursiveRidgeDiffusion2D</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">rrd</span> <span class="o">=</span> <span class="n">nighresjava</span><span class="o">.</span><span class="n">FilterRecursiveRidgeDiffusion</span><span class="p">()</span>
+
+    <span class="c1"># set parameters</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setRidgeIntensities</span><span class="p">(</span><span class="n">ridge_intensities</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setRidgeFilter</span><span class="p">(</span><span class="n">ridge_filter</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setOrientationToSurface</span><span class="p">(</span><span class="n">orientation</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setMinimumScale</span><span class="p">(</span><span class="n">min_scale</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setMaximumScale</span><span class="p">(</span><span class="n">max_scale</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setDiffusionFactor</span><span class="p">(</span><span class="n">diffusion_factor</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setSimilarityScale</span><span class="p">(</span><span class="n">similarity_scale</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setPropagationModel</span><span class="p">(</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_iter</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span> <span class="n">rrd</span><span class="o">.</span><span class="n">setPropagationModel</span><span class="p">(</span><span class="s2">&quot;diffusion&quot;</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setMaxIterations</span><span class="p">(</span><span class="n">max_iter</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setMaxDifference</span><span class="p">(</span><span class="n">max_diff</span><span class="p">)</span>
+
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setDimensions</span><span class="p">(</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setResolutions</span><span class="p">(</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="c1"># input input_image</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">setInputImage</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                            <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+
+    <span class="c1"># input surface_levelset : dirty fix for the case where surface image not input</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">surface_levelset</span><span class="p">)</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+        <span class="n">rrd</span><span class="o">.</span><span class="n">setSurfaceLevelSet</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                            <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no surface image&quot;</span><span class="p">)</span>
+
+    <span class="c1"># input location prior image : loc_prior is optional</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">loc_prior</span><span class="p">)</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+        <span class="n">rrd</span><span class="o">.</span><span class="n">setLocationPrior</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                            <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no location prior image&quot;</span><span class="p">)</span>
+
+
+    <span class="c1"># execute Extraction</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rrd</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># if the Java module fails, reraise the error it throws</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> The underlying Java code did not execute cleanly: &quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">raise</span>
+        <span class="k">return</span>
+
+    <span class="c1"># reshape output to what nibabel likes</span>
+    <span class="n">filter_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rrd</span><span class="o">.</span><span class="n">getFilterResponseImage</span><span class="p">(),</span>
+                                   <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">propagation_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rrd</span><span class="o">.</span><span class="n">getPropagatedResponseImage</span><span class="p">(),</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">scale_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rrd</span><span class="o">.</span><span class="n">getDetectionScaleImage</span><span class="p">(),</span>
+                                   <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">ridge_direction_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rrd</span><span class="o">.</span><span class="n">getRidgeDirectionImage</span><span class="p">(),</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span>
+                                    <span class="p">(</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="mi">3</span><span class="p">),</span>
+                                    <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">ridge_pv_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rrd</span><span class="o">.</span><span class="n">getRidgePartialVolumeImage</span><span class="p">(),</span>
+                                   <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">ridge_size_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rrd</span><span class="o">.</span><span class="n">getRidgeSizeImage</span><span class="p">(),</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+
+    <span class="c1"># adapt header max for each image so that correct max is displayed</span>
+    <span class="c1"># and create nifiti objects</span>
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">filter_data</span><span class="p">)</span>
+    <span class="n">filter_img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">filter_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">propagation_data</span><span class="p">)</span>
+    <span class="n">propag_img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">propagation_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">scale_data</span><span class="p">)</span>
+    <span class="n">scale_img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">scale_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">ridge_direction_data</span><span class="p">)</span>
+    <span class="n">ridge_dir_img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">ridge_direction_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">ridge_pv_data</span><span class="p">)</span>
+    <span class="n">ridge_pv_img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">ridge_pv_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">ridge_size_data</span><span class="p">)</span>
+    <span class="n">ridge_size_img</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">ridge_size_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save_data</span><span class="p">:</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">filter_file</span><span class="p">),</span> <span class="n">filter_img</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">propagation_file</span><span class="p">),</span> <span class="n">propag_img</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">scale_file</span><span class="p">),</span> <span class="n">scale_img</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">ridge_direction_file</span><span class="p">),</span> <span class="n">ridge_dir_img</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">ridge_pv_file</span><span class="p">),</span> <span class="n">ridge_pv_img</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">ridge_size_file</span><span class="p">),</span> <span class="n">ridge_size_img</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;filter&#39;</span><span class="p">:</span> <span class="n">filter_img</span><span class="p">,</span> <span class="s1">&#39;propagation&#39;</span><span class="p">:</span> <span class="n">propag_img</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="n">scale_img</span><span class="p">,</span>
+            <span class="s1">&#39;ridge_dir&#39;</span><span class="p">:</span> <span class="n">ridge_dir_img</span><span class="p">,</span> <span class="s1">&#39;ridge_pv&#39;</span><span class="p">:</span> <span class="n">ridge_pv_img</span><span class="p">,</span>
+            <span class="s1">&#39;ridge_size&#39;</span><span class="p">:</span> <span class="n">ridge_size_img</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

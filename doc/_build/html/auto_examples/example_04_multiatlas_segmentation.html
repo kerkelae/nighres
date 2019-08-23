@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multiatlas Segmentation &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Brain" href="../brain/index.html" />
+    <link rel="prev" title="DOTS white matter segmentation" href="example_05_dots_segmentation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nighres usage examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example_01_tissue_classification.html">Tissue classification from MP2RAGE data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_02_cortical_depth_estimation.html">Cortical depth estimation from MGDM segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_03_brain_coregistration.html">Brain co-registration from MP2RAGE data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_05_dots_segmentation.html">DOTS white matter segmentation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Multiatlas Segmentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import-and-download">Import and download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#skull-stripping">Skull stripping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mgdm-classification">MGDM classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#syn-co-registration">SyN co-registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply-deformations-to-segmentations">Apply deformations to segmentations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transform-a-selected-label-into-levelset-representation">Transform a selected label into levelset representation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Nighres usage examples</a> &raquo;</li>
+        
+      <li>Multiatlas Segmentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/auto_examples/example_04_multiatlas_segmentation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-example-04-multiatlas-segmentation-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="multiatlas-segmentation">
+<span id="sphx-glr-auto-examples-example-04-multiatlas-segmentation-py"></span><h1>Multiatlas Segmentation<a class="headerlink" href="#multiatlas-segmentation" title="Permalink to this headline">¶</a></h1>
+<p>This example shows how to perform multi-atlas segmentation based on MP2RAGE
+data by performing the following steps:</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Downloading three open MP2RAGE datasets using</dt>
+<dd><p class="first last"><a class="reference internal" href="../data/download_data.html#nighres.data.download_7T_TRT" title="nighres.data.download_7T_TRT"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.data.download_7T_TRT()</span></code></a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Remove the skull and create a brain mask using</dt>
+<dd><p class="first last"><a class="reference internal" href="../brain/mp2rage_skullstripping.html#nighres.brain.mp2rage_skullstripping" title="nighres.brain.mp2rage_skullstripping"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.brain.mp2rage_skullstripping()</span></code></a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Atlas-guided tissue classification using MGDMfor first two subjects to</dt>
+<dd><p class="first last">be used as an atlas using</p>
+</dd>
+</dl>
+<p><a class="reference internal" href="../brain/mgdm_segmentation.html#nighres.brain.mgdm_segmentation" title="nighres.brain.mgdm_segmentation"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.brain.mgdm_segmentation()</span></code></a> <a class="footnote-reference" href="#id4" id="id1">[1]</a></p>
+</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><dl class="first docutils">
+<dt>Co-register non-linearly the atlas brains the the third subject using</dt>
+<dd><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.registration.embedded_syn()</span></code> <a class="footnote-reference" href="#id5" id="id2">[2]</a></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Deform segmentation labels using</dt>
+<dd><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.registration.apply_deformation()</span></code></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Turn individual labels into levelset surfaces using</dt>
+<dd><a class="reference internal" href="../surface/probability_to_levelset.html#nighres.surface.probability_to_levelset" title="nighres.surface.probability_to_levelset"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.surface.probability_to_levelset()</span></code></a></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Build a final shape average using</dt>
+<dd><table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">func:</th><td class="field-body"><cite>nighres.shape.levelset_fusion</cite></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Important note: this example is both computationally expensive (recomputing
+everything from basic inputs) and practically pointless (a direct MGDM
+segmentation or a multi-atlas approach with manually defined labels and more
+subjects would both be meaningful). This example is only meant as illustration.</p>
+<div class="section" id="import-and-download">
+<h2>Import and download<a class="headerlink" href="#import-and-download" title="Permalink to this headline">¶</a></h2>
+<p>First we import <code class="docutils literal notranslate"><span class="pre">nighres</span></code> and the <code class="docutils literal notranslate"><span class="pre">os</span></code> module to set the output directory
+Make sure to run this file in a  directory you have write access to, or
+change the <code class="docutils literal notranslate"><span class="pre">out_dir</span></code> variable below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nighres</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="kn">as</span> <span class="nn">nb</span>
+
+<span class="n">in_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;nighres_examples/data_sets&#39;</span><span class="p">)</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;nighres_examples/multiatlas_segmentation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We also try to import Nilearn plotting functions. If Nilearn is not
+installed, plotting will be skipped.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skip_plots</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">skip_plots</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Nilearn could not be imported, plotting will be skipped&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we download an example MP2RAGE dataset. It is the structural scan of the
+first subject, first session of the 7T Test-Retest dataset published by
+Gorgolewski et al (2015) <a class="footnote-reference" href="#id6" id="id3">[3]</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset1</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">download_7T_TRT</span><span class="p">(</span><span class="n">in_dir</span><span class="p">,</span> <span class="n">subject_id</span><span class="o">=</span><span class="s1">&#39;sub001_sess1&#39;</span><span class="p">)</span>
+<span class="n">dataset2</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">download_7T_TRT</span><span class="p">(</span><span class="n">in_dir</span><span class="p">,</span> <span class="n">subject_id</span><span class="o">=</span><span class="s1">&#39;sub002_sess1&#39;</span><span class="p">)</span>
+<span class="n">dataset3</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">download_7T_TRT</span><span class="p">(</span><span class="n">in_dir</span><span class="p">,</span> <span class="n">subject_id</span><span class="o">=</span><span class="s1">&#39;sub003_sess1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="skull-stripping">
+<h2>Skull stripping<a class="headerlink" href="#skull-stripping" title="Permalink to this headline">¶</a></h2>
+<p>First we perform skull stripping. Only the second inversion image is required
+to calculate the brain mask. But if we input the T1map and T1w image as well,
+they will be masked for us. We also save the outputs in the <code class="docutils literal notranslate"><span class="pre">out_dir</span></code>
+specified above and use a subject ID as the base file_name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skullstripping_results1</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">brain</span><span class="o">.</span><span class="n">mp2rage_skullstripping</span><span class="p">(</span>
+                                            <span class="n">second_inversion</span><span class="o">=</span><span class="n">dataset1</span><span class="p">[</span><span class="s1">&#39;inv2&#39;</span><span class="p">],</span>
+                                            <span class="n">t1_weighted</span><span class="o">=</span><span class="n">dataset1</span><span class="p">[</span><span class="s1">&#39;t1w&#39;</span><span class="p">],</span>
+                                            <span class="n">t1_map</span><span class="o">=</span><span class="n">dataset1</span><span class="p">[</span><span class="s1">&#39;t1map&#39;</span><span class="p">],</span>
+                                            <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                            <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sub001_sess1&#39;</span><span class="p">,</span>
+                                            <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+<span class="n">skullstripping_results2</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">brain</span><span class="o">.</span><span class="n">mp2rage_skullstripping</span><span class="p">(</span>
+                                            <span class="n">second_inversion</span><span class="o">=</span><span class="n">dataset2</span><span class="p">[</span><span class="s1">&#39;inv2&#39;</span><span class="p">],</span>
+                                            <span class="n">t1_weighted</span><span class="o">=</span><span class="n">dataset2</span><span class="p">[</span><span class="s1">&#39;t1w&#39;</span><span class="p">],</span>
+                                            <span class="n">t1_map</span><span class="o">=</span><span class="n">dataset2</span><span class="p">[</span><span class="s1">&#39;t1map&#39;</span><span class="p">],</span>
+                                            <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                            <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sub002_sess1&#39;</span><span class="p">,</span>
+                                            <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+<span class="n">skullstripping_results3</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">brain</span><span class="o">.</span><span class="n">mp2rage_skullstripping</span><span class="p">(</span>
+                                            <span class="n">second_inversion</span><span class="o">=</span><span class="n">dataset3</span><span class="p">[</span><span class="s1">&#39;inv2&#39;</span><span class="p">],</span>
+                                            <span class="n">t1_weighted</span><span class="o">=</span><span class="n">dataset3</span><span class="p">[</span><span class="s1">&#39;t1w&#39;</span><span class="p">],</span>
+                                            <span class="n">t1_map</span><span class="o">=</span><span class="n">dataset3</span><span class="p">[</span><span class="s1">&#39;t1map&#39;</span><span class="p">],</span>
+                                            <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                            <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sub003_sess1&#39;</span><span class="p">,</span>
+                                            <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">in Nighres functions that have several outputs return a
+dictionary storing the different outputs. You can find the keys in the
+docstring by typing <code class="docutils literal notranslate"><span class="pre">nighres.brain.mp2rage_skullstripping?</span></code> or list
+them with <code class="docutils literal notranslate"><span class="pre">skullstripping_results.keys()</span></code></p>
+</div>
+<p>To check if the skull stripping worked well we plot the brain mask on top of
+the original image. You can also open the images stored in <code class="docutils literal notranslate"><span class="pre">out_dir</span></code> in
+your favourite interactive viewer and scroll through the volume.</p>
+<p>Like Nilearn, we use Nibabel SpatialImage objects to pass data internally.
+Therefore, we can directly plot the outputs using <a class="reference external" href="http://nilearn.github.io/plotting/index.html#different-plotting-functions">Nilearn plotting functions</a>
+.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_roi.html#nilearn.plotting.plot_roi" title="View documentation for nilearn.plotting.plot_roi"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span></a><span class="p">(</span><span class="n">skullstripping_results1</span><span class="p">[</span><span class="s1">&#39;brain_mask&#39;</span><span class="p">],</span> <span class="n">dataset1</span><span class="p">[</span><span class="s1">&#39;t1map&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_roi.html#nilearn.plotting.plot_roi" title="View documentation for nilearn.plotting.plot_roi"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span></a><span class="p">(</span><span class="n">skullstripping_results2</span><span class="p">[</span><span class="s1">&#39;brain_mask&#39;</span><span class="p">],</span> <span class="n">dataset2</span><span class="p">[</span><span class="s1">&#39;t1w&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_roi.html#nilearn.plotting.plot_roi" title="View documentation for nilearn.plotting.plot_roi"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span></a><span class="p">(</span><span class="n">skullstripping_results3</span><span class="p">[</span><span class="s1">&#39;brain_mask&#39;</span><span class="p">],</span> <span class="n">dataset3</span><span class="p">[</span><span class="s1">&#39;t1w&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mgdm-classification">
+<h2>MGDM classification<a class="headerlink" href="#mgdm-classification" title="Permalink to this headline">¶</a></h2>
+<p>Next, we use MGDM to estimate anatomical labels from subjects 1 and 2</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mgdm_results1</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">brain</span><span class="o">.</span><span class="n">mgdm_segmentation</span><span class="p">(</span>
+                        <span class="n">contrast_image1</span><span class="o">=</span><span class="n">skullstripping_results1</span><span class="p">[</span><span class="s1">&#39;t1w_masked&#39;</span><span class="p">],</span>
+                        <span class="n">contrast_type1</span><span class="o">=</span><span class="s2">&quot;Mp2rage7T&quot;</span><span class="p">,</span>
+                        <span class="n">contrast_image2</span><span class="o">=</span><span class="n">skullstripping_results1</span><span class="p">[</span><span class="s1">&#39;t1map_masked&#39;</span><span class="p">],</span>
+                        <span class="n">contrast_type2</span><span class="o">=</span><span class="s2">&quot;T1map7T&quot;</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub001_sess1&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+<span class="n">mgdm_results2</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">brain</span><span class="o">.</span><span class="n">mgdm_segmentation</span><span class="p">(</span>
+                        <span class="n">contrast_image1</span><span class="o">=</span><span class="n">skullstripping_results2</span><span class="p">[</span><span class="s1">&#39;t1w_masked&#39;</span><span class="p">],</span>
+                        <span class="n">contrast_type1</span><span class="o">=</span><span class="s2">&quot;Mp2rage7T&quot;</span><span class="p">,</span>
+                        <span class="n">contrast_image2</span><span class="o">=</span><span class="n">skullstripping_results2</span><span class="p">[</span><span class="s1">&#39;t1map_masked&#39;</span><span class="p">],</span>
+                        <span class="n">contrast_type2</span><span class="o">=</span><span class="s2">&quot;T1map7T&quot;</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub002_sess1&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we look at the topology-constrained segmentation MGDM created</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">mgdm_results1</span><span class="p">[</span><span class="s1">&#39;segmentation&#39;</span><span class="p">],</span>
+                      <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cubehelix&#39;</span><span class="p">,</span>  <span class="n">colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">mgdm_results2</span><span class="p">[</span><span class="s1">&#39;segmentation&#39;</span><span class="p">],</span>
+                      <span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cubehelix&#39;</span><span class="p">,</span>  <span class="n">colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="syn-co-registration">
+<h2>SyN co-registration<a class="headerlink" href="#syn-co-registration" title="Permalink to this headline">¶</a></h2>
+<p>Next, we use the masked data as input for co-registration. The T1 maps are
+used here as they are supposed to be more similar</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">syn_results1</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">registration</span><span class="o">.</span><span class="n">embedded_antsreg</span><span class="p">(</span>
+                        <span class="n">source_image</span><span class="o">=</span><span class="n">skullstripping_results1</span><span class="p">[</span><span class="s1">&#39;t1map_masked&#39;</span><span class="p">],</span>
+                        <span class="n">target_image</span><span class="o">=</span><span class="n">skullstripping_results3</span><span class="p">[</span><span class="s1">&#39;t1map_masked&#39;</span><span class="p">],</span>
+                        <span class="n">run_rigid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">run_affine</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">run_syn</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">coarse_iterations</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+                        <span class="n">medium_iterations</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fine_iterations</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                        <span class="n">cost_function</span><span class="o">=</span><span class="s1">&#39;MutualInformation&#39;</span><span class="p">,</span>
+                        <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;NearestNeighbor&#39;</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub001_sess1&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+<span class="n">syn_results2</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">registration</span><span class="o">.</span><span class="n">embedded_antsreg</span><span class="p">(</span>
+                        <span class="n">source_image</span><span class="o">=</span><span class="n">skullstripping_results2</span><span class="p">[</span><span class="s1">&#39;t1map_masked&#39;</span><span class="p">],</span>
+                        <span class="n">target_image</span><span class="o">=</span><span class="n">skullstripping_results3</span><span class="p">[</span><span class="s1">&#39;t1map_masked&#39;</span><span class="p">],</span>
+                        <span class="n">run_rigid</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">run_affine</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">run_syn</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">coarse_iterations</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+                        <span class="n">medium_iterations</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fine_iterations</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                        <span class="n">cost_function</span><span class="o">=</span><span class="s1">&#39;MutualInformation&#39;</span><span class="p">,</span>
+                        <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;NearestNeighbor&#39;</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub002_sess1&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we look at the coregistered image that SyN created</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">syn_results1</span><span class="p">[</span><span class="s1">&#39;transformed_source&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">syn_results2</span><span class="p">[</span><span class="s1">&#39;transformed_source&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-deformations-to-segmentations">
+<h2>Apply deformations to segmentations<a class="headerlink" href="#apply-deformations-to-segmentations" title="Permalink to this headline">¶</a></h2>
+<p>We use the computed deformation to transform MGDM segmentations</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">deformed1</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">registration</span><span class="o">.</span><span class="n">apply_coordinate_mappings</span><span class="p">(</span>
+                        <span class="n">image</span><span class="o">=</span><span class="n">mgdm_results1</span><span class="p">[</span><span class="s1">&#39;segmentation&#39;</span><span class="p">],</span>
+                        <span class="n">mapping1</span><span class="o">=</span><span class="n">syn_results1</span><span class="p">[</span><span class="s1">&#39;mapping&#39;</span><span class="p">],</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub001_sess1_seg&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+<span class="n">deformed2</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">registration</span><span class="o">.</span><span class="n">apply_coordinate_mappings</span><span class="p">(</span>
+                        <span class="n">image</span><span class="o">=</span><span class="n">mgdm_results2</span><span class="p">[</span><span class="s1">&#39;segmentation&#39;</span><span class="p">],</span>
+                        <span class="n">mapping1</span><span class="o">=</span><span class="n">syn_results2</span><span class="p">[</span><span class="s1">&#39;mapping&#39;</span><span class="p">],</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub002_sess1_seg&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we look at the segmentations deformed by SyN</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">deformed1</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">deformed2</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform-a-selected-label-into-levelset-representation">
+<h2>Transform a selected label into levelset representation<a class="headerlink" href="#transform-a-selected-label-into-levelset-representation" title="Permalink to this headline">¶</a></h2>
+<p>We use the deformed MGDM segmentations</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># label 32 = left caudate</span>
+<span class="n">img1</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_volume</span><span class="p">(</span><span class="n">deformed1</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+<span class="n">struct1</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">((</span><span class="n">img1</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">==</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                            <span class="n">img1</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">img1</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+
+<span class="n">img2</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_volume</span><span class="p">(</span><span class="n">deformed2</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+<span class="n">struct2</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">((</span><span class="n">img2</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">==</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span>
+                            <span class="n">img2</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">img2</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+
+<span class="n">levelset1</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">probability_to_levelset</span><span class="p">(</span>
+                        <span class="n">probability_image</span><span class="o">=</span><span class="n">struct1</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub001_sess1_struct&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+<span class="n">levelset2</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">surface</span><span class="o">.</span><span class="n">probability_to_levelset</span><span class="p">(</span>
+                        <span class="n">probability_image</span><span class="o">=</span><span class="n">struct2</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub002_sess1_struct&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+
+<span class="n">final_seg</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">levelset_fusion</span><span class="p">(</span><span class="n">levelset_images</span><span class="o">=</span><span class="p">[</span><span class="n">levelset1</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">],</span>
+                        <span class="n">levelset2</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]],</span>
+                        <span class="n">correct_topology</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub003_sess1_struct_seg&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we look at the final segmentation from shape fusion</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_volume</span><span class="p">(</span><span class="n">levelset1</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">((</span><span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">),</span>
+                                <span class="n">img</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_roi.html#nilearn.plotting.plot_roi" title="View documentation for nilearn.plotting.plot_roi"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span></a><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">dataset3</span><span class="p">[</span><span class="s1">&#39;t1map&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_volume</span><span class="p">(</span><span class="n">levelset2</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">((</span><span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">),</span>
+                                <span class="n">img</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_roi.html#nilearn.plotting.plot_roi" title="View documentation for nilearn.plotting.plot_roi"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span></a><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">dataset3</span><span class="p">[</span><span class="s1">&#39;t1map&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_volume</span><span class="p">(</span><span class="n">final_seg</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">((</span><span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">),</span>
+                                <span class="n">img</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_roi.html#nilearn.plotting.plot_roi" title="View documentation for nilearn.plotting.plot_roi"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_roi</span></a><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">dataset3</span><span class="p">[</span><span class="s1">&#39;t1map&#39;</span><span class="p">],</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">black_bg</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the example is not run in a jupyter notebook, render the plots:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.show.html#nilearn.plotting.show" title="View documentation for nilearn.plotting.show"><span class="n">plotting</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Bogovic, Prince and Bazin (2013). A multiple object geometric
+deformable model for image segmentation. DOI: 10.1016/j.cviu.2012.10.006.A</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Avants et al (2008). Symmetric diffeomorphic image registration with
+cross-correlation: evaluating automated labeling of elderly and
+neurodegenerative brain. DOI: 10.1016/j.media.2007.06.004</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Gorgolewski et al (2015). A high resolution 7-Tesla resting-state fMRI
+test-retest dataset with cognitive and physiological measures.
+DOI: 10.1038/sdata.2014.54</td></tr>
+</tbody>
+</table>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-example-04-multiatlas-segmentation-py">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" download="" href="../_downloads/5dfc5dd3be78f56e251c0780b2e14e1d/example_04_multiatlas_segmentation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">example_04_multiatlas_segmentation.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" download="" href="../_downloads/6997a012a9cb4fce4e35eb6d36cc0f46/example_04_multiatlas_segmentation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">example_04_multiatlas_segmentation.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../brain/index.html" class="btn btn-neutral float-right" title="Brain" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example_05_dots_segmentation.html" class="btn btn-neutral float-left" title="DOTS white matter segmentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

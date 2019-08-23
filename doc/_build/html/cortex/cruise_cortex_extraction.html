@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cruise_cortex_extraction &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data" href="../data/index.html" />
+    <link rel="prev" title="Cortex" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cortex</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">cruise_cortex_extraction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples-using-nighres-cortex-cruise-cortex-extraction">Examples using <code class="docutils literal notranslate"><span class="pre">nighres.cortex.cruise_cortex_extraction</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Cortex</a> &raquo;</li>
+        
+      <li>cruise_cortex_extraction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/cortex/cruise_cortex_extraction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="cruise-cortex-extraction">
+<h1>cruise_cortex_extraction<a class="headerlink" href="#cruise-cortex-extraction" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nighres.cortex.cruise_cortex_extraction">
+<code class="descclassname">nighres.cortex.</code><code class="descname">cruise_cortex_extraction</code><span class="sig-paren">(</span><em>init_image</em>, <em>wm_image</em>, <em>gm_image</em>, <em>csf_image</em>, <em>vd_image=None</em>, <em>data_weight=0.4</em>, <em>regularization_weight=0.1</em>, <em>max_iterations=500</em>, <em>normalize_probabilities=False</em>, <em>correct_wm_pv=True</em>, <em>wm_dropoff_dist=1.0</em>, <em>topology='wcs'</em>, <em>topology_lut_dir=None</em>, <em>save_data=False</em>, <em>overwrite=False</em>, <em>output_dir=None</em>, <em>file_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nighres/cortex/cruise_cortex_extraction.html#cruise_cortex_extraction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nighres.cortex.cruise_cortex_extraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>CRUISE cortex extraction</p>
+<p>Segments the cortex from a whole brain segmented data set with the CRUISE
+method (includes customized partial voluming corrections and the
+Anatomically-Consistent Enhancement (ACE) of sulcal fundi).</p>
+<p>Note that the main input images are generated by the nighres module
+<a class="reference internal" href="../brain/extract_brain_region.html#nighres.brain.extract_brain_region" title="nighres.brain.extract_brain_region"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.brain.extract_brain_region()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>init_image</strong> (<em>niimg</em>) – Initial white matter (WM) segmentation mask (binary mask&gt;0 inside WM)</li>
+<li><strong>wm_image</strong> (<em>niimg</em>) – Filled WM probability map (values in [0,1], including subcortical GM
+and ventricles)</li>
+<li><strong>gm_image</strong> (<em>niimg</em>) – Cortical gray matter (GM) probability map (values in [0,1], highest
+inside the cortex)</li>
+<li><strong>csf_image</strong> (<em>niimg</em>) – Sulcal cerebro-spinal fluid (CSf) and background probability map
+(values in [0,1], highest in CSf and masked regions)</li>
+<li><strong>vd_image</strong> (<em>niimg</em><em>, </em><em>optional</em>) – Additional probability map of vessels and dura mater to be excluded</li>
+<li><strong>data_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Weighting of probability-based balloon forces in CRUISE (default 0.4,
+sum of {data_weight,regularization_weight} should be below or equal
+to 1)</li>
+<li><strong>regularization_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Weighting of curvature regularization forces in CRUISE (default 0.1,
+sum of {data_weight,regularization_weight} should be below or equal
+to 1)</li>
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Maximum number of iterations in CRUISE (default is 500)</li>
+<li><strong>normalize_probabilities</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to normalize the wm, gm, and csf probabilities
+(default is False)</li>
+<li><strong>correct_wm_pv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether to correct for WM partial voluming in gyral crowns
+(default is True)</li>
+<li><strong>wm_dropoff_dist</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Distance parameter to lower WM probabilities away from current
+segmentation (default is 1.0 voxel)</li>
+<li><strong>topology</strong> (<em>{'wcs'</em><em>, </em><em>'no'}</em>) – Topology setting, choose ‘wcs’ (well-composed surfaces) for strongest
+topology constraint, ‘no’ for no topology constraint (default is ‘wcs’)</li>
+<li><strong>topology_lut_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Path to directory in which topology files are stored (default is stored
+in TOPOLOGY_LUT_DIR)</li>
+<li><strong>save_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Save output data to file (default is False)</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Overwrite existing results (default is False)</li>
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Path to desired output directory, will be created if it doesn’t exist</li>
+<li><strong>file_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Desired base name for output files with file extension
+(suffixes will be added)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>Dictionary collecting outputs under the following keys
+(suffix of output files in brackets)</p>
+<ul class="simple">
+<li>cortex (niimg): Hard segmentation of the cortex with labels
+background=0, gm=1, and wm=2 (_cruise_cortex)</li>
+<li>gwb (niimg): Gray-White matter Boundary (GWB) level set function
+(_cruise_gwb)</li>
+<li>cgb (niimg): CSF-Gray matter Boundary (CGB) level set function
+(_cruise_cgb)</li>
+<li>avg (niimg): Central level set function, obtained as geometric
+average of GWB and CGB (<em>not</em> the middle depth of the
+cortex, use volumetric_layering if you want accurate
+depth measures) (_cruise-avg)</li>
+<li>thickness (niimg): Simple cortical thickness estimate: distance to
+the GWB and CGB surfaces, in mm (_cruise-thick)</li>
+<li>pwm (niimg): Optimized WM probability, including partial volume and
+distant values correction (_cruise-pwm)</li>
+<li>pgm (niimg): Optimized GM probability, including CSF sulcal ridges
+correction (_cruise_pgm)</li>
+<li>pcsf (niimg): Optimized CSF probability, including sulcal ridges and
+vessel/dura correction (_cruise-pwm)</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Original algorithm by Xiao Han. Java module by Pierre-Louis Bazin.
+Algorithm details can be found in <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>X. Han, D.L. Pham, D. Tosun, M.E. Rettmann, C. Xu, and J. L. Prince,
+CRUISE: Cortical Reconstruction Using Implicit Surface Evolution,
+NeuroImage, vol. 23, pp. 997–1012, 2004</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="examples-using-nighres-cortex-cruise-cortex-extraction">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">nighres.cortex.cruise_cortex_extraction</span></code><a class="headerlink" href="#examples-using-nighres-cortex-cruise-cortex-extraction" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to obtain a cortical laminar depth representation from an MGDM segmentat..."><div class="figure" id="id3">
+<img alt="../_images/sphx_glr_example_02_cortical_depth_estimation_thumb.png" src="../_images/sphx_glr_example_02_cortical_depth_estimation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_02_cortical_depth_estimation.html#sphx-glr-auto-examples-example-02-cortical-depth-estimation-py"><span class="std std-ref">Cortical depth estimation from MGDM segmentation</span></a></span></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../data/index.html" class="btn btn-neutral float-right" title="Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Cortex" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

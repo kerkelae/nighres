@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>download_data &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Filtering" href="../filtering/index.html" />
+    <link rel="prev" title="Data" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">download_data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples-using-nighres-data-download-7t-trt">Examples using <code class="docutils literal notranslate"><span class="pre">nighres.data.download_7T_TRT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples-using-nighres-data-download-dti-2mm">Examples using <code class="docutils literal notranslate"><span class="pre">nighres.data.download_DTI_2mm</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples-using-nighres-data-download-dots-atlas">Examples using <code class="docutils literal notranslate"><span class="pre">nighres.data.download_DOTS_atlas</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Data</a> &raquo;</li>
+        
+      <li>download_data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/data/download_data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="download-data">
+<h1>download_data<a class="headerlink" href="#download-data" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nighres.data.download_7T_TRT">
+<code class="descclassname">nighres.data.</code><code class="descname">download_7T_TRT</code><span class="sig-paren">(</span><em>data_dir</em>, <em>overwrite=False</em>, <em>subject_id='sub001_sess1'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nighres/data/download_data.html#download_7T_TRT"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nighres.data.download_7T_TRT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the MP2RAGE data from the 7T Test-Retest
+dataset published by Gorgolewski et al (2015) <a href="#id10"><span class="problematic" id="id1">[1]_</span></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Writeable directory in which downloaded files should be stored. A
+subdirectory called ‘7T_TRT’ will be created in this location.</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Overwrite existing files in the same exact path (default is False)</li>
+<li><strong>subject_id</strong> (<em>'sub001_sess1'</em><em>, </em><em>'sub002_sess1'</em><em>, </em><em>'sub003_sess1'}</em>) – Which dataset to download (default is ‘sub001_sess1’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>Dictionary with keys pointing to the location of the downloaded files</p>
+<ul class="simple">
+<li>inv2 : path to second inversion image</li>
+<li>t1w : path to T1-weighted (uniform) image</li>
+<li>t1map : path to quantitative T1 image</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The full dataset is available at <a class="reference external" href="http://openscience.cbs.mpg.de/7t_trt/">http://openscience.cbs.mpg.de/7t_trt/</a></p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Gorgolewski et al (2015). A high resolution 7-Tesla resting-state
+fMRI test-retest dataset with cognitive and physiological measures.
+DOI: 10.1038/sdata.2014.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="examples-using-nighres-data-download-7t-trt">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">nighres.data.download_7T_TRT</span></code><a class="headerlink" href="#examples-using-nighres-data-download-7t-trt" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to obtain a tissue classification from MP2RAGE data by performing the fo..."><div class="figure" id="id5">
+<img alt="../_images/sphx_glr_example_01_tissue_classification_thumb.png" src="../_images/sphx_glr_example_01_tissue_classification_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_01_tissue_classification.html#sphx-glr-auto-examples-example-01-tissue-classification-py"><span class="std std-ref">Tissue classification from MP2RAGE data</span></a></span></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to co-register MP2RAGE data by performing the following steps:"><div class="figure" id="id6">
+<img alt="../_images/sphx_glr_example_03_brain_coregistration_thumb.png" src="../_images/sphx_glr_example_03_brain_coregistration_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_03_brain_coregistration.html#sphx-glr-auto-examples-example-03-brain-coregistration-py"><span class="std std-ref">Brain co-registration from MP2RAGE data</span></a></span></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform multi-atlas segmentation based on MP2RAGE data by performing ..."><div class="figure" id="id7">
+<img alt="../_images/sphx_glr_example_04_multiatlas_segmentation_thumb.png" src="../_images/sphx_glr_example_04_multiatlas_segmentation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_04_multiatlas_segmentation.html#sphx-glr-auto-examples-example-04-multiatlas-segmentation-py"><span class="std std-ref">Multiatlas Segmentation</span></a></span></p>
+</div>
+</div><div style='clear:both'></div><dl class="function">
+<dt id="nighres.data.download_DTI_2mm">
+<code class="descclassname">nighres.data.</code><code class="descname">download_DTI_2mm</code><span class="sig-paren">(</span><em>data_dir</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nighres/data/download_data.html#download_DTI_2mm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nighres.data.download_DTI_2mm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads an example DTI data set</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Writeable directory in which downloaded files should be stored. A
+subdirectory called ‘DTI_2mm’ will be created in this location.</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Overwrite existing files in the same exact path (default is False)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>Dictionary with keys pointing to the location of the downloaded files</p>
+<ul class="simple">
+<li>dti : path to DTI image</li>
+<li>mask : path to binary brain mask</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="examples-using-nighres-data-download-dti-2mm">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">nighres.data.download_DTI_2mm</span></code><a class="headerlink" href="#examples-using-nighres-data-download-dti-2mm" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform white matter segmentation using Diffusion Oriented Tract Segm..."><div class="figure" id="id8">
+<img alt="../_images/sphx_glr_example_05_dots_segmentation_thumb.png" src="../_images/sphx_glr_example_05_dots_segmentation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_05_dots_segmentation.html#sphx-glr-auto-examples-example-05-dots-segmentation-py"><span class="std std-ref">DOTS white matter segmentation</span></a></span></p>
+</div>
+</div><div style='clear:both'></div><dl class="function">
+<dt id="nighres.data.download_DOTS_atlas">
+<code class="descclassname">nighres.data.</code><code class="descname">download_DOTS_atlas</code><span class="sig-paren">(</span><em>overwrite=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nighres/data/download_data.html#download_DOTS_atlas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nighres.data.download_DOTS_atlas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads the statistical atlas presented in <a href="#id11"><span class="problematic" id="id3">[1]_</span></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Overwrite existing files in the same exact path (default is False)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with keys pointing to the location of the downloaded files<ul class="simple">
+<li>fiber_p : path to atlas probability image</li>
+<li>fiber_dir : path to atlas direction mask</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Bazin et al (2011). Direct segmentation of the major white matter
+tracts in diffusion tensor images.
+DOI: 10.1016/j.neuroimage.2011.06.020</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="examples-using-nighres-data-download-dots-atlas">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">nighres.data.download_DOTS_atlas</span></code><a class="headerlink" href="#examples-using-nighres-data-download-dots-atlas" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform white matter segmentation using Diffusion Oriented Tract Segm..."><div class="figure" id="id9">
+<img alt="../_images/sphx_glr_example_05_dots_segmentation_thumb.png" src="../_images/sphx_glr_example_05_dots_segmentation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_05_dots_segmentation.html#sphx-glr-auto-examples-example-05-dots-segmentation-py"><span class="std std-ref">DOTS white matter segmentation</span></a></span></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../filtering/index.html" class="btn btn-neutral float-right" title="Filtering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

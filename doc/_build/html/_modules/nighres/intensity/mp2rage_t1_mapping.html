@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nighres.intensity.mp2rage_t1_mapping &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>nighres.intensity.mp2rage_t1_mapping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for nighres.intensity.mp2rage_t1_mapping</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">nighresjava</span>
+<span class="kn">from</span> <span class="nn">..io</span> <span class="k">import</span> <span class="n">load_volume</span><span class="p">,</span> <span class="n">save_volume</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">_output_dir_4saving</span><span class="p">,</span> <span class="n">_fname_4saving</span><span class="p">,</span> \
+                    <span class="n">_check_topology_lut_dir</span><span class="p">,</span> <span class="n">_check_available_memory</span>
+
+
+<div class="viewcode-block" id="mp2rage_t1_mapping"><a class="viewcode-back" href="../../../intensity/mp2rage_t1_mapping.html#nighres.intensity.mp2rage_t1_mapping">[docs]</a><span class="k">def</span> <span class="nf">mp2rage_t1_mapping</span><span class="p">(</span><span class="n">first_inversion</span><span class="p">,</span> <span class="n">second_inversion</span><span class="p">,</span> 
+                      <span class="n">inversion_times</span><span class="p">,</span> <span class="n">flip_angles</span><span class="p">,</span> <span class="n">inversion_TR</span><span class="p">,</span>
+                      <span class="n">excitation_TR</span><span class="p">,</span> <span class="n">N_excitations</span><span class="p">,</span> <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.96</span><span class="p">,</span>
+                      <span class="n">correct_B1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">B1_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_phase</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">save_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; MP2RAGE T1 mapping</span>
+
+<span class="sd">    Estimate T1/R1 by a look-up table method adapted from [1]_</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    first_inversion: [niimg]</span>
+<span class="sd">        List of {magnitude, phase} images for the first inversion</span>
+<span class="sd">    second_inversion: [niimg]</span>
+<span class="sd">        List of {magnitude, phase} images for the second inversion</span>
+<span class="sd">    inversion_times: [float]</span>
+<span class="sd">        List of {first, second} inversion times, in seconds</span>
+<span class="sd">    flip_angles: [float]</span>
+<span class="sd">        List of {first, second} flip angles, in degrees</span>
+<span class="sd">    inversion_TR: float</span>
+<span class="sd">        Inversion repetition time, in seconds</span>
+<span class="sd">    excitation_TR: [float]</span>
+<span class="sd">        List of {first,second} repetition times,in seconds</span>
+<span class="sd">    N_excitations: int</span>
+<span class="sd">        Number of excitations</span>
+<span class="sd">    efficiency: float</span>
+<span class="sd">        Inversion efficiency (default is 0.96)</span>
+<span class="sd">    correct_B1: bool</span>
+<span class="sd">        Whether to correct for B1 inhomogeneities (default is False)</span>
+<span class="sd">    B1_map: niimg</span>
+<span class="sd">        Computed B1 map</span>
+<span class="sd">    scale_phase: bool</span>
+<span class="sd">        Whether to rescale the phase image in [0,2PI] or to assume it is </span>
+<span class="sd">        already in radians</span>
+<span class="sd">    save_data: bool</span>
+<span class="sd">        Save output data to file (default is False)</span>
+<span class="sd">    overwrite: bool</span>
+<span class="sd">        Overwrite existing results (default is False)</span>
+<span class="sd">    output_dir: str, optional</span>
+<span class="sd">        Path to desired output directory, will be created if it doesn&#39;t exist</span>
+<span class="sd">    file_name: str, optional</span>
+<span class="sd">        Desired base name for output files with file extension</span>
+<span class="sd">        (suffixes will be added)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Dictionary collecting outputs under the following keys</span>
+<span class="sd">        (suffix of output files in brackets)</span>
+
+<span class="sd">        * t1 (niimg): Map of estimated T1 times (_qt1map-t1)</span>
+<span class="sd">        * r1 (niimg): Map of estimated R1 relaxation rate (_qt1map-r1)</span>
+<span class="sd">        * uni (niimg): Estimated PD weighted image at TE=0 (_qt1map-uni)</span>
+<span class="sd">        </span>
+<span class="sd">    Notes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Original Java module by Pierre-Louis Bazin.</span>
+<span class="sd">    </span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Marques, Kober, Krueger, van der Zwaag, Van de Moortele, Gruetter (2010)</span>
+<span class="sd">        MP2RAGE, a self bias-field corrected sequence for improved segmentation </span>
+<span class="sd">        and T1-mapping at high field. doi: 10.1016/j.neuroimage.2009.10.002.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">T1 Mapping&#39;</span><span class="p">)</span>
+
+    <span class="c1"># make sure that saving related parameters are correct</span>
+    <span class="k">if</span> <span class="n">save_data</span><span class="p">:</span>
+        <span class="n">output_dir</span> <span class="o">=</span> <span class="n">_output_dir_4saving</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">first_inversion</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="n">t1_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> 
+                        <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                   <span class="n">rootfile</span><span class="o">=</span><span class="n">first_inversion</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                   <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;qt1map-t1&#39;</span><span class="p">))</span>
+
+        <span class="n">r1_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> 
+                        <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                   <span class="n">rootfile</span><span class="o">=</span><span class="n">first_inversion</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                   <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;qt1map-r1&#39;</span><span class="p">))</span>
+
+        <span class="n">uni_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> 
+                        <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                   <span class="n">rootfile</span><span class="o">=</span><span class="n">first_inversion</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                   <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;qt1map-uni&#39;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">overwrite</span> <span class="ow">is</span> <span class="kc">False</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">t1_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">r1_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">uni_file</span><span class="p">)</span> <span class="p">:</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;t1&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">t1_file</span><span class="p">),</span>
+                          <span class="s1">&#39;r1&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">r1_file</span><span class="p">),</span> 
+                          <span class="s1">&#39;uni&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">uni_file</span><span class="p">)}</span>
+                <span class="k">return</span> <span class="n">output</span>
+
+    <span class="c1"># start virtual machine, if not already running</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mem</span> <span class="o">=</span> <span class="n">_check_available_memory</span><span class="p">()</span>
+        <span class="n">nighresjava</span><span class="o">.</span><span class="n">initVM</span><span class="p">(</span><span class="n">initialheap</span><span class="o">=</span><span class="n">mem</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">],</span> <span class="n">maxheap</span><span class="o">=</span><span class="n">mem</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="c1"># create algorithm instance</span>
+    <span class="n">qt1map</span> <span class="o">=</span> <span class="n">nighresjava</span><span class="o">.</span><span class="n">IntensityMp2rageT1Fitting</span><span class="p">()</span>
+
+    <span class="c1"># set algorithm parameters</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setFirstInversionTime</span><span class="p">(</span><span class="n">inversion_times</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setSecondInversionTime</span><span class="p">(</span><span class="n">inversion_times</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setFirstFlipAngle</span><span class="p">(</span><span class="n">flip_angles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setSecondFlipAngle</span><span class="p">(</span><span class="n">flip_angles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setInversionRepetitionTime</span><span class="p">(</span><span class="n">inversion_TR</span><span class="p">)</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setFirstExcitationRepetitionTime</span><span class="p">(</span><span class="n">excitation_TR</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setSecondExcitationRepetitionTime</span><span class="p">(</span><span class="n">excitation_TR</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setNumberExcitations</span><span class="p">(</span><span class="n">N_excitations</span><span class="p">)</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setInversionEfficiency</span><span class="p">(</span><span class="n">efficiency</span><span class="p">)</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setCorrectB1inhomogeneities</span><span class="p">(</span><span class="n">correct_B1</span><span class="p">)</span>
+     
+    <span class="c1"># load first image and use it to set dimensions and resolution</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">first_inversion</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="c1">#data = data[0:10,0:10,0:10]</span>
+    <span class="n">affine</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">affine</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">header</span>
+    <span class="n">resolution</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">header</span><span class="o">.</span><span class="n">get_zooms</span><span class="p">()]</span>
+    <span class="n">dimensions</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setDimensions</span><span class="p">(</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setResolutions</span><span class="p">(</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="c1"># input images</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setFirstInversionMagnitude</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                    <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">first_inversion</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setFirstInversionPhase</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                    <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">second_inversion</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setSecondInversionMagnitude</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                    <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">second_inversion</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">qt1map</span><span class="o">.</span><span class="n">setSecondInversionPhase</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                    <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+ 
+    <span class="k">if</span> <span class="p">(</span><span class="n">correct_B1</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">B1_map</span><span class="p">)</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+        <span class="n">qt1map</span><span class="o">.</span><span class="n">setB1mapImage</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                                    <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+ 
+    <span class="c1"># execute the algorithm</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">qt1map</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># if the Java module fails, reraise the error it throws</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> The underlying Java code did not execute cleanly: &quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">raise</span>
+        <span class="k">return</span>
+
+    <span class="c1"># reshape output to what nibabel likes</span>
+    <span class="n">t1_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">qt1map</span><span class="o">.</span><span class="n">getQuantitativeT1mapImage</span><span class="p">(),</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">r1_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">qt1map</span><span class="o">.</span><span class="n">getQuantitativeR1mapImage</span><span class="p">(),</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">uni_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">qt1map</span><span class="o">.</span><span class="n">getUniformT1weightedImage</span><span class="p">(),</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="c1"># adapt header max for each image so that correct max is displayed</span>
+    <span class="c1"># and create nifiti objects</span>
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">t1_data</span><span class="p">)</span>
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">t1_data</span><span class="p">)</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">t1_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">r1_data</span><span class="p">)</span>
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">r1_data</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">r1_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">uni_data</span><span class="p">)</span>
+    <span class="n">header</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">uni_data</span><span class="p">)</span>
+    <span class="n">uni</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">uni_data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save_data</span><span class="p">:</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">t1_file</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">r1_file</span><span class="p">,</span> <span class="n">r1</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">uni_file</span><span class="p">,</span> <span class="n">uni</span><span class="p">)</span>
+       
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;t1&#39;</span><span class="p">:</span> <span class="n">t1</span><span class="p">,</span> <span class="s1">&#39;r1&#39;</span><span class="p">:</span> <span class="n">r1</span><span class="p">,</span> <span class="s1">&#39;uni&#39;</span><span class="p">:</span> <span class="n">uni</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

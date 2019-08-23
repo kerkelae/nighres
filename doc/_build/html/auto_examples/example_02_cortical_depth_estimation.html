@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cortical depth estimation from MGDM segmentation &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Brain co-registration from MP2RAGE data" href="example_03_brain_coregistration.html" />
+    <link rel="prev" title="Tissue classification from MP2RAGE data" href="example_01_tissue_classification.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nighres usage examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="example_01_tissue_classification.html">Tissue classification from MP2RAGE data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cortical depth estimation from MGDM segmentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import-and-point-to-previous-example">Import and point to previous example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#region-extraction">Region Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cruise-cortical-reconstruction">CRUISE cortical reconstruction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#volumetric-layering">Volumetric layering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example_03_brain_coregistration.html">Brain co-registration from MP2RAGE data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_05_dots_segmentation.html">DOTS white matter segmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_04_multiatlas_segmentation.html">Multiatlas Segmentation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Nighres usage examples</a> &raquo;</li>
+        
+      <li>Cortical depth estimation from MGDM segmentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/auto_examples/example_02_cortical_depth_estimation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-example-02-cortical-depth-estimation-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="cortical-depth-estimation-from-mgdm-segmentation">
+<span id="sphx-glr-auto-examples-example-02-cortical-depth-estimation-py"></span><h1>Cortical depth estimation from MGDM segmentation<a class="headerlink" href="#cortical-depth-estimation-from-mgdm-segmentation" title="Permalink to this headline">¶</a></h1>
+<p>This example shows how to obtain a cortical laminar depth representation from
+an MGDM segmentation result with the following steps:</p>
+<ol class="arabic simple">
+<li>Get a segmentation result from the <em>tissue_classification</em> example</li>
+<li>Extract the cortex of the left hemisphere with
+<a class="reference internal" href="../brain/extract_brain_region.html#nighres.brain.extract_brain_region" title="nighres.brain.extract_brain_region"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.brain.extract_brain_region()</span></code></a></li>
+<li>Cortical reconstruction with CRUISE
+<a class="reference internal" href="../cortex/cruise_cortex_extraction.html#nighres.cortex.cruise_cortex_extraction" title="nighres.cortex.cruise_cortex_extraction"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.cortex.cruise_cortex_extraction()</span></code></a> <a class="footnote-reference" href="#id3" id="id1">[1]</a></li>
+<li>Anatomical depth estimation trough
+<a class="reference internal" href="../laminar/volumetric_layering.html#nighres.laminar.volumetric_layering" title="nighres.laminar.volumetric_layering"><code class="xref py py-func docutils literal notranslate"><span class="pre">nighres.laminar.volumetric_layering()</span></code></a> <a class="footnote-reference" href="#id4" id="id2">[2]</a></li>
+</ol>
+<p>Important note: this example assumes you have run the tissue classification
+example first (example_tissue_classification.py)</p>
+<div class="section" id="import-and-point-to-previous-example">
+<h2>Import and point to previous example<a class="headerlink" href="#import-and-point-to-previous-example" title="Permalink to this headline">¶</a></h2>
+<p>First we import <code class="docutils literal notranslate"><span class="pre">nighres</span></code> and the <code class="docutils literal notranslate"><span class="pre">os</span></code> module to set the output directory
+Make sure to run this file in a  directory you have write access to, or
+change the <code class="docutils literal notranslate"><span class="pre">out_dir</span></code> variable below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nighres</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">in_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;nighres_examples/tissue_classification&#39;</span><span class="p">)</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span>
+                       <span class="s1">&#39;nighres_examples/cortical_depth_estimation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We also try to import Nilearn plotting functions. If Nilearn is not
+installed, plotting will be skipped.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skip_plots</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">skip_plots</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Nilearn could not be imported, plotting will be skipped&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we pull the MGDM results from previous example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">segmentation</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">in_dir</span><span class="p">,</span> <span class="s1">&#39;sub001_sess1_mgdm-seg.nii.gz&#39;</span><span class="p">)</span>
+<span class="n">boundary_dist</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">in_dir</span><span class="p">,</span> <span class="s1">&#39;sub001_sess1_mgdm-dist.nii.gz&#39;</span><span class="p">)</span>
+<span class="n">max_labels</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">in_dir</span><span class="p">,</span> <span class="s1">&#39;sub001_sess1_mgdm-lbls.nii.gz&#39;</span><span class="p">)</span>
+<span class="n">max_probas</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">in_dir</span><span class="p">,</span> <span class="s1">&#39;sub001_sess1_mgdm-mems.nii.gz&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">segmentation</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">boundary_dist</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">max_labels</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">max_probas</span><span class="p">))</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;This example builds upon the example_tissue_segmentation.py one&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Please run it first&#39;</span><span class="p">)</span>
+    <span class="nb">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="region-extraction">
+<h2>Region Extraction<a class="headerlink" href="#region-extraction" title="Permalink to this headline">¶</a></h2>
+<p>Here we pull from the MGDM output the needed regions for cortical
+reconstruction: the GM cortex (‘region’), the underlying WM (with filled
+subcortex and ventricles, ‘inside’) and the surrounding CSF (with masked
+regions, ‘background’)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cortex</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">brain</span><span class="o">.</span><span class="n">extract_brain_region</span><span class="p">(</span><span class="n">segmentation</span><span class="o">=</span><span class="n">segmentation</span><span class="p">,</span>
+                                            <span class="n">levelset_boundary</span><span class="o">=</span><span class="n">boundary_dist</span><span class="p">,</span>
+                                            <span class="n">maximum_membership</span><span class="o">=</span><span class="n">max_probas</span><span class="p">,</span>
+                                            <span class="n">maximum_label</span><span class="o">=</span><span class="n">max_labels</span><span class="p">,</span>
+                                            <span class="n">extracted_region</span><span class="o">=</span><span class="s1">&#39;left_cerebrum&#39;</span><span class="p">,</span>
+                                            <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                            <span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;sub001_sess1_left_cerebrum&#39;</span><span class="p">,</span>
+                                            <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">in Nighres functions that have several outputs return a
+dictionary storing the different outputs. You can find the keys in the
+docstring by typing <code class="docutils literal notranslate"><span class="pre">nighres.brain.mp2rage_extract_brain_region?</span></code> or
+list them with <code class="docutils literal notranslate"><span class="pre">cortex.keys()</span></code></p>
+</div>
+<p>To check if the extraction worked well we plot the GM and WM probabilities.
+You can also open the images stored in <code class="docutils literal notranslate"><span class="pre">out_dir</span></code> in
+your favourite interactive viewer and scroll through the volume.</p>
+<p>Like Nilearn, we use Nibabel SpatialImage objects to pass data internally.
+Therefore, we can directly plot the outputs using <a class="reference external" href="http://nilearn.github.io/plotting/index.html#different-plotting-functions">Nilearn plotting functions</a>
+.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">cortex</span><span class="p">[</span><span class="s1">&#39;region_proba&#39;</span><span class="p">],</span>
+                      <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">,</span>  <span class="n">colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">cortex</span><span class="p">[</span><span class="s1">&#39;inside_proba&#39;</span><span class="p">],</span>
+                      <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">,</span>  <span class="n">colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/cortical_extraction1.png" src="../_images/cortical_extraction1.png" />
+<hr class="docutils" />
+<img alt="../_images/cortical_extraction2.png" src="../_images/cortical_extraction2.png" />
+</div>
+<hr class="docutils" />
+<div class="section" id="cruise-cortical-reconstruction">
+<h2>CRUISE cortical reconstruction<a class="headerlink" href="#cruise-cortical-reconstruction" title="Permalink to this headline">¶</a></h2>
+<p>Next, we use the extracted data as input for cortex reconstruction with the
+CRUISE algorithm. CRUISE works with the membership functions as a guide and
+the WM inside mask as a (topologically spherical) starting point to grow a
+refined GM/WM boundary and CSF/GM boundary</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cruise</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">cortex</span><span class="o">.</span><span class="n">cruise_cortex_extraction</span><span class="p">(</span>
+                        <span class="n">init_image</span><span class="o">=</span><span class="n">cortex</span><span class="p">[</span><span class="s1">&#39;inside_mask&#39;</span><span class="p">],</span>
+                        <span class="n">wm_image</span><span class="o">=</span><span class="n">cortex</span><span class="p">[</span><span class="s1">&#39;inside_proba&#39;</span><span class="p">],</span>
+                        <span class="n">gm_image</span><span class="o">=</span><span class="n">cortex</span><span class="p">[</span><span class="s1">&#39;region_proba&#39;</span><span class="p">],</span>
+                        <span class="n">csf_image</span><span class="o">=</span><span class="n">cortex</span><span class="p">[</span><span class="s1">&#39;background_proba&#39;</span><span class="p">],</span>
+                        <span class="n">normalize_probabilities</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub001_sess1_left_cerebrum&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we look at the topology-constrained segmentation CRUISE created</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">cruise</span><span class="p">[</span><span class="s1">&#39;cortex&#39;</span><span class="p">],</span>
+                      <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cubehelix&#39;</span><span class="p">,</span>  <span class="n">colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/cortical_extraction3.png" src="../_images/cortical_extraction3.png" />
+</div>
+<hr class="docutils" />
+<div class="section" id="volumetric-layering">
+<h2>Volumetric layering<a class="headerlink" href="#volumetric-layering" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we use the GM/WM boundary (GWB) and CSF/GM boundary (CGB) from
+CRUISE to compute cortical depth with a volume-preserving technique</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">depth</span> <span class="o">=</span> <span class="n">nighres</span><span class="o">.</span><span class="n">laminar</span><span class="o">.</span><span class="n">volumetric_layering</span><span class="p">(</span>
+                        <span class="n">inner_levelset</span><span class="o">=</span><span class="n">cruise</span><span class="p">[</span><span class="s1">&#39;gwb&#39;</span><span class="p">],</span>
+                        <span class="n">outer_levelset</span><span class="o">=</span><span class="n">cruise</span><span class="p">[</span><span class="s1">&#39;cgb&#39;</span><span class="p">],</span>
+                        <span class="n">n_layers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                        <span class="n">save_data</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;sub001_sess1_left_cerebrum&quot;</span><span class="p">,</span>
+                        <span class="n">output_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we look at the laminar depth estimates</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_img.html#nilearn.plotting.plot_img" title="View documentation for nilearn.plotting.plot_img"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_img</span></a><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="s1">&#39;depth&#39;</span><span class="p">],</span>
+                      <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;autumn&#39;</span><span class="p">,</span>  <span class="n">colorbar</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                      <span class="n">annotate</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>  <span class="n">draw_cross</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/cortical_extraction4.png" src="../_images/cortical_extraction4.png" />
+<hr class="docutils" />
+<p>If the example is not run in a jupyter notebook, render the plots:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">skip_plots</span><span class="p">:</span>
+    <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.show.html#nilearn.plotting.show" title="View documentation for nilearn.plotting.show"><span class="n">plotting</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Han et al (2004) CRUISE: Cortical Reconstruction Using Implicit
+Surface Evolution, NeuroImage, vol. 23, pp. 997–1012.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Waehnert et al (2014) Anatomically motivated modeling of cortical
+laminae. DOI: 10.1016/j.neuroimage.2013.03.078</td></tr>
+</tbody>
+</table>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-example-02-cortical-depth-estimation-py">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" download="" href="../_downloads/45dde293c1f6792b46f5b831ec3b0ede/example_02_cortical_depth_estimation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">example_02_cortical_depth_estimation.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" download="" href="../_downloads/dcd3ab274d2de52fe0568eeb3eecda0b/example_02_cortical_depth_estimation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">example_02_cortical_depth_estimation.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example_03_brain_coregistration.html" class="btn btn-neutral float-right" title="Brain co-registration from MP2RAGE data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="example_01_tissue_classification.html" class="btn btn-neutral float-left" title="Tissue classification from MP2RAGE data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

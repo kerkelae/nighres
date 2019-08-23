@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nighres.shape.topology_correction &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>nighres.shape.topology_correction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for nighres.shape.topology_correction</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+<span class="kn">import</span> <span class="nn">nighresjava</span>
+<span class="kn">from</span> <span class="nn">..io</span> <span class="k">import</span> <span class="n">load_volume</span><span class="p">,</span> <span class="n">save_volume</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">_output_dir_4saving</span><span class="p">,</span> <span class="n">_fname_4saving</span><span class="p">,</span> \
+                    <span class="n">_check_topology_lut_dir</span><span class="p">,</span> <span class="n">_check_available_memory</span>
+
+
+<div class="viewcode-block" id="topology_correction"><a class="viewcode-back" href="../../../shape/topology_correction.html#nighres.shape.topology_correction">[docs]</a><span class="k">def</span> <span class="nf">topology_correction</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">shape_type</span><span class="p">,</span>
+                    <span class="n">connectivity</span><span class="o">=</span><span class="s1">&#39;wcs&#39;</span><span class="p">,</span> <span class="n">propagation</span><span class="o">=</span><span class="s1">&#39;object-&gt;background&#39;</span><span class="p">,</span>
+                    <span class="n">minimum_distance</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">,</span> <span class="n">topology_lut_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">save_data</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">file_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Topology correction</span>
+
+<span class="sd">    Corrects the topology of a binary image, a probability map or a levelset</span>
+<span class="sd">    surface to spherical with a fast marching technique [1]_.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image: niimg</span>
+<span class="sd">        Image representing the shape of interest</span>
+<span class="sd">    shape_type: {&#39;binary_object&#39;,&#39;probability_map&#39;,&#39;signed_distance_function&#39;}</span>
+<span class="sd">        Which type of image is used as input</span>
+<span class="sd">    connectivity: {&#39;wcs&#39;,&#39;6/18&#39;,&#39;6/26&#39;,&#39;18/6&#39;,&#39;26/6&#39;}</span>
+<span class="sd">        What connectivity type to use (default is wcs: well-composed surfaces)</span>
+<span class="sd">    propagation: {&#39;object-&gt;background&#39;,&#39;background-&gt;object&#39;}</span>
+<span class="sd">        Which direction to use to enforce topology changes</span>
+<span class="sd">        (default is &#39;object-&gt;background&#39; )</span>
+<span class="sd">    minimum_distance: float, optional</span>
+<span class="sd">        Minimum distance to impose between successive voxels (default is 1e-5)</span>
+<span class="sd">    topology_lut_dir: str, optional</span>
+<span class="sd">        Path to directory in which topology files are stored (default is stored</span>
+<span class="sd">        in TOPOLOGY_LUT_DIR)</span>
+<span class="sd">    save_data: bool, optional</span>
+<span class="sd">        Save output data to file (default is False)</span>
+<span class="sd">    overwrite: bool, optional</span>
+<span class="sd">        Overwrite existing results (default is False)</span>
+<span class="sd">    output_dir: str, optional</span>
+<span class="sd">        Path to desired output directory, will be created if it doesn&#39;t exist</span>
+<span class="sd">    file_name: str, optional</span>
+<span class="sd">        Desired base name for output files with file extension</span>
+<span class="sd">        (suffixes will be added)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Dictionary collecting outputs under the following keys</span>
+<span class="sd">        (suffix of output files in brackets)</span>
+
+<span class="sd">        * corrected (niimg): Corrected image (output file suffix _tpc-img)</span>
+<span class="sd">        * object (niimg): Corrected binary object (output file suffix _tpc-obj)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Original Java module by Pierre-Louis Bazin</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Bazin and Pham (2007). Topology correction of segmented medical</span>
+<span class="sd">        images using a fast marching algorithm</span>
+<span class="sd">        doi:10.1016/j.cmpb.2007.08.006</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Topology Correction&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check topology_lut_dir and set default if not given</span>
+    <span class="n">topology_lut_dir</span> <span class="o">=</span> <span class="n">_check_topology_lut_dir</span><span class="p">(</span><span class="n">topology_lut_dir</span><span class="p">)</span>
+
+    <span class="c1"># make sure that saving related parameters are correct</span>
+    <span class="k">if</span> <span class="n">save_data</span><span class="p">:</span>
+        <span class="n">output_dir</span> <span class="o">=</span> <span class="n">_output_dir_4saving</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+
+        <span class="n">corrected_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span>
+                        <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                       <span class="n">rootfile</span><span class="o">=</span><span class="n">image</span><span class="p">,</span>
+                                       <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;tpc-img&#39;</span><span class="p">))</span>
+
+        <span class="n">corrected_obj_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span>
+                        <span class="n">_fname_4saving</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+                                       <span class="n">rootfile</span><span class="o">=</span><span class="n">image</span><span class="p">,</span>
+                                       <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;tpc-obj&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">overwrite</span> <span class="ow">is</span> <span class="kc">False</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">corrected_file</span><span class="p">)</span> \
+            <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">corrected_obj_file</span><span class="p">)</span> <span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;skip computation (use existing results)&quot;</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;corrected&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">corrected_file</span><span class="p">),</span>
+                      <span class="s1">&#39;object&#39;</span><span class="p">:</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">corrected_obj_file</span><span class="p">)}</span>
+            <span class="k">return</span> <span class="n">output</span>
+
+    <span class="c1"># start virtual machine if not running</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mem</span> <span class="o">=</span> <span class="n">_check_available_memory</span><span class="p">()</span>
+        <span class="n">nighresjava</span><span class="o">.</span><span class="n">initVM</span><span class="p">(</span><span class="n">initialheap</span><span class="o">=</span><span class="n">mem</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">],</span> <span class="n">maxheap</span><span class="o">=</span><span class="n">mem</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># initiate class</span>
+    <span class="n">algorithm</span> <span class="o">=</span> <span class="n">nighresjava</span><span class="o">.</span><span class="n">ShapeTopologyCorrection2</span><span class="p">()</span>
+
+    <span class="c1"># load the data</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">hdr</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">header</span>
+    <span class="n">aff</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">affine</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+    <span class="n">resolution</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">hdr</span><span class="o">.</span><span class="n">get_zooms</span><span class="p">()]</span>
+    <span class="n">dimensions</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setResolutions</span><span class="p">(</span><span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setDimensions</span><span class="p">(</span><span class="n">dimensions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dimensions</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setShapeImage</span><span class="p">(</span><span class="n">nighresjava</span><span class="o">.</span><span class="n">JArray</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)(</span>
+                            <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)))</span>
+
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setShapeImageType</span><span class="p">(</span><span class="n">shape_type</span><span class="p">)</span>
+
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setTopology</span><span class="p">(</span><span class="n">connectivity</span><span class="p">)</span>
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setTopologyLUTdirectory</span><span class="p">(</span><span class="n">topology_lut_dir</span><span class="p">)</span>
+
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setPropagationDirection</span><span class="p">(</span><span class="n">propagation</span><span class="p">)</span>
+
+    <span class="n">algorithm</span><span class="o">.</span><span class="n">setMinimumDistance</span><span class="p">(</span><span class="n">minimum_distance</span><span class="p">)</span>
+
+    <span class="c1"># execute class</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">algorithm</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># if the Java module fails, reraise the error it throws</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> The underlying Java code did not execute cleanly: &quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">raise</span>
+        <span class="k">return</span>
+
+    <span class="c1"># collect outputs</span>
+    <span class="n">corrected_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">getCorrectedImage</span><span class="p">(),</span>
+                               <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;cal_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">corrected_data</span><span class="p">)</span>
+    <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">corrected_data</span><span class="p">)</span>
+    <span class="n">corrected</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">corrected_data</span><span class="p">,</span> <span class="n">aff</span><span class="p">,</span> <span class="n">hdr</span><span class="p">)</span>
+
+    <span class="n">corrected_obj_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">getCorrectedObjectImage</span><span class="p">(),</span>
+                               <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="n">dimensions</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;cal_min&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">corrected_obj_data</span><span class="p">)</span>
+    <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;cal_max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">corrected_obj_data</span><span class="p">)</span>
+    <span class="n">corrected_obj</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">corrected_obj_data</span><span class="p">,</span> <span class="n">aff</span><span class="p">,</span> <span class="n">hdr</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save_data</span><span class="p">:</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">corrected_file</span><span class="p">,</span> <span class="n">corrected</span><span class="p">)</span>
+        <span class="n">save_volume</span><span class="p">(</span><span class="n">corrected_obj_file</span><span class="p">,</span> <span class="n">corrected_obj</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;corrected&#39;</span><span class="p">:</span> <span class="n">corrected</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span><span class="n">corrected_obj</span><span class="p">}</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

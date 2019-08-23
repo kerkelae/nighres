@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mgdm_cells &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Registration" href="../registration/index.html" />
+    <link rel="prev" title="Microscopy" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Microscopy</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mgdm_cells</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Microscopy</a> &raquo;</li>
+        
+      <li>mgdm_cells</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/microscopy/mgdm_cells.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mgdm-cells">
+<h1>mgdm_cells<a class="headerlink" href="#mgdm-cells" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nighres.microscopy.mgdm_cells">
+<code class="descclassname">nighres.microscopy.</code><code class="descname">mgdm_cells</code><span class="sig-paren">(</span><em>contrast_image1</em>, <em>contrast_type1</em>, <em>contrast_image2=None</em>, <em>contrast_type2=None</em>, <em>contrast_image3=None</em>, <em>contrast_type3=None</em>, <em>stack_dimension='2D'</em>, <em>force_weight=0.6</em>, <em>curvature_weight=0.3</em>, <em>cell_threshold=0.1</em>, <em>max_iterations=200</em>, <em>min_change=0.0001</em>, <em>topology='wcs'</em>, <em>topology_lut_dir=None</em>, <em>save_data=False</em>, <em>overwrite=False</em>, <em>output_dir=None</em>, <em>file_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nighres/microscopy/mgdm_cells.html#mgdm_cells"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nighres.microscopy.mgdm_cells" title="Permalink to this definition">¶</a></dt>
+<dd><p>MGDM cell segmentation</p>
+<p>Estimates cell structures using
+a Multiple Object Geometric Deformable Model (MGDM)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>contrast_image1</strong> (<em>niimg</em>) – First input image to perform segmentation on</li>
+<li><strong>contrast_type1</strong> (<em>{&quot;centroid-proba&quot;</em><em>, </em><em>&quot;local-maxima&quot;</em><em>,</em><em>&quot;foreground-proba&quot;</em><em>,</em>) – “image-intensities”}
+Contrast type of first input image</li>
+<li><strong>contrast_image2</strong> (<em>niimg</em><em>, </em><em>optional</em>) – Additional input image to inform segmentation, must be in the same
+space as constrast_image1, requires contrast_type2</li>
+<li><strong>contrast_type2</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>{&quot;centroid-proba&quot;</em><em>, </em><em>&quot;local-maxima&quot;</em><em>,</em><em>&quot;foreground-proba&quot;</em><em>,</em>) – “image-intensities”}, optional
+Contrast type of second input image</li>
+<li><strong>contrast_image3</strong> (<em>niimg</em><em>, </em><em>optional</em>) – Additional input image to inform segmentation, must be in the same
+space as constrast_image1, requires contrast_type3</li>
+<li><strong>contrast_type3</strong> (<em>{&quot;centroid-proba&quot;</em><em>, </em><em>&quot;local-maxima&quot;</em><em>,</em><em>&quot;foreground-proba&quot;</em><em>,</em>) – “image-intensities”}, optional
+Contrast type of third input image</li>
+<li><strong>stack_dimension</strong> (<em>{'2D'</em><em>,</em><em>'3D'}</em><em>, </em><em>optional</em>) – Dimension of the data for processing, either a stack of independent
+2D slices or a fully 3D stack</li>
+<li><strong>max_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Maximum number of iterations per step for MGDM (default is 800, set
+to 1 for quick testing of registration of priors, which does not
+perform true segmentation)</li>
+<li><strong>min_change</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Minimum amount of change in the segmentation for MGDM to stop
+(default is 0.001)</li>
+<li><strong>force_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Forces to drive MGDM to cell boundaries
+(default is 0.5)</li>
+<li><strong>curvature_weight</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Curvature regularization forces
+(default is 0.1)</li>
+<li><strong>cell_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Ratio of lower intensities from the local maximum to be included in
+a given cell (default is 0.1)</li>
+<li><strong>topology</strong> (<em>{'wcs'</em><em>, </em><em>'no'}</em><em>, </em><em>optional</em>) – Topology setting, choose ‘wcs’ (well-composed surfaces) for strongest
+topology constraint, ‘no’ for no topology constraint (default is ‘wcs’)</li>
+<li><strong>topology_lut_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Path to directory in which topology files are stored (default is stored
+in TOPOLOGY_LUT_DIR)</li>
+<li><strong>save_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Save output data to file (default is False)</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><em>optional</em>) – Overwrite existing results (default is False)</li>
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Path to desired output directory, will be created if it doesn’t exist</li>
+<li><strong>file_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Desired base name for output files with file extension
+(suffixes will be added)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>Dictionary collecting outputs under the following keys
+(suffix of output files in brackets)</p>
+<ul class="simple">
+<li>segmentation (niimg): Hard brain segmentation with topological
+constraints (if chosen) (_mgdmc-seg)</li>
+<li>distance (niimg): Minimum distance to a segmentation boundary
+(_mgdmc-dist)</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Original Java module by Pierre-Louis Bazin. Algorithm details can be
+found in <a class="footnote-reference" href="#id3" id="id1">[1]</a> and <a class="footnote-reference" href="#id4" id="id2">[2]</a></p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Bogovic, Prince and Bazin (2013). A multiple object geometric
+deformable model for image segmentation.
+doi:10.1016/j.cviu.2012.10.006.A</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Fan, Bazin and Prince (2008). A multi-compartment segmentation
+framework with homeomorphic level sets. DOI: 10.1109/CVPR.2008.4587475</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../registration/index.html" class="btn btn-neutral float-right" title="Registration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Microscopy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

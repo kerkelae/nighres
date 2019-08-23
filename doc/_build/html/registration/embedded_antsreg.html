@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>embedded_antsreg &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="embedded_antsreg_2d" href="embedded_antsreg_2d.html" />
+    <link rel="prev" title="Registration" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Registration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">embedded_antsreg</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples-using-nighres-registration-embedded-antsreg">Examples using <code class="docutils literal notranslate"><span class="pre">nighres.registration.embedded_antsreg</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="embedded_antsreg_2d.html">embedded_antsreg_2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generate_coordinate_mapping.html">generate_coordinate_mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apply_coordinate_mappings.html">apply_coordinate_mappings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simple_align.html">simple_align</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/python_function.html">Adding a new Python function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Registration</a> &raquo;</li>
+        
+      <li>embedded_antsreg</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/registration/embedded_antsreg.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="embedded-antsreg">
+<h1>embedded_antsreg<a class="headerlink" href="#embedded-antsreg" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="nighres.registration.embedded_antsreg">
+<code class="descclassname">nighres.registration.</code><code class="descname">embedded_antsreg</code><span class="sig-paren">(</span><em>source_image</em>, <em>target_image</em>, <em>run_rigid=False</em>, <em>rigid_iterations=1000</em>, <em>run_affine=False</em>, <em>affine_iterations=1000</em>, <em>run_syn=True</em>, <em>coarse_iterations=40</em>, <em>medium_iterations=50</em>, <em>fine_iterations=40</em>, <em>cost_function='MutualInformation'</em>, <em>interpolation='NearestNeighbor'</em>, <em>regularization='Medium'</em>, <em>convergence=1e-06</em>, <em>ignore_affine=False</em>, <em>ignore_header=False</em>, <em>save_data=False</em>, <em>overwrite=False</em>, <em>output_dir=None</em>, <em>file_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nighres/registration/embedded_antsreg.html#embedded_antsreg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#nighres.registration.embedded_antsreg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Embedded ANTS Registration</p>
+<p>Runs the rigid and/or Symmetric Normalization (SyN) algorithm of ANTs and
+formats the output deformations into voxel coordinate mappings as used in
+CBSTools registration and transformation routines.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source_image</strong> (<em>niimg</em>) – Image to register</li>
+<li><strong>target_image</strong> (<em>niimg</em>) – Reference image to match</li>
+<li><strong>run_rigid</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether or not to run a rigid registration first (default is False)</li>
+<li><strong>rigid_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Number of iterations in the rigid step (default is 1000)</li>
+<li><strong>run_affine</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether or not to run a affine registration first (default is False)</li>
+<li><strong>affine_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Number of iterations in the affine step (default is 1000)</li>
+<li><strong>run_syn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Whether or not to run a SyN registration (default is True)</li>
+<li><strong>coarse_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Number of iterations at the coarse level (default is 40)</li>
+<li><strong>medium_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Number of iterations at the medium level (default is 50)</li>
+<li><strong>fine_iterations</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Number of iterations at the fine level (default is 40)</li>
+<li><strong>cost_function</strong> (<em>{'CrossCorrelation'</em><em>, </em><em>'MutualInformation'}</em>) – Cost function for the registration (default is ‘MutualInformation’)</li>
+<li><strong>interpolation</strong> (<em>{'NearestNeighbor'</em><em>, </em><em>'Linear'}</em>) – Interpolation for the registration result (default is ‘NearestNeighbor’)</li>
+<li><strong>regularization</strong> (<em>{'Low'</em><em>, </em><em>'Medium'</em><em>, </em><em>'High'}</em>) – Regularization preset for the SyN deformation (default is ‘Medium’)</li>
+<li><strong>convergence</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – Threshold for convergence, can make the algorithm very slow
+(default is convergence)</li>
+<li><strong>ignore_affine</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Ignore the affine matrix information extracted from the image header
+(default is False)</li>
+<li><strong>ignore_header</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Ignore the orientation information and affine matrix information
+extracted from the image header (default is False)</li>
+<li><strong>save_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Save output data to file (default is False)</li>
+<li><strong>overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – Overwrite existing results (default is False)</li>
+<li><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Path to desired output directory, will be created if it doesn’t exist</li>
+<li><strong>file_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – Desired base name for output files with file extension
+(suffixes will be added)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><p>Dictionary collecting outputs under the following keys
+(suffix of output files in brackets)</p>
+<ul class="simple">
+<li>transformed_source (niimg): Deformed source image (_ants-def)</li>
+<li>mapping (niimg): Coordinate mapping from source to target (_ants-map)</li>
+<li>inverse (niimg): Inverse coordinate mapping from target to source
+(_ants-invmap)</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Port of the CBSTools Java module by Pierre-Louis Bazin. The main algorithm
+is part of the ANTs software by Brian Avants and colleagues <a class="footnote-reference" href="#id3" id="id1">[1]</a>. The
+interfacing with ANTs is performed through Nipype <a class="footnote-reference" href="#id4" id="id2">[2]</a>. Parameters have
+been set to values commonly found in neuroimaging scripts online, but not
+necessarily optimal.</p>
+<p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Avants et al (2008), Symmetric diffeomorphic
+image registration with cross-correlation: evaluating automated labeling
+of elderly and neurodegenerative brain, Med Image Anal. 12(1):26-41</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Gorgolewski et al (2011) Nipype: a flexible, lightweight and
+extensible neuroimaging data processing framework in python. Front
+Neuroinform 5. doi:10.3389/fninf.2011.00013</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="examples-using-nighres-registration-embedded-antsreg">
+<h2>Examples using <code class="docutils literal notranslate"><span class="pre">nighres.registration.embedded_antsreg</span></code><a class="headerlink" href="#examples-using-nighres-registration-embedded-antsreg" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to co-register MP2RAGE data by performing the following steps:"><div class="figure" id="id5">
+<img alt="../_images/sphx_glr_example_03_brain_coregistration_thumb.png" src="../_images/sphx_glr_example_03_brain_coregistration_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_03_brain_coregistration.html#sphx-glr-auto-examples-example-03-brain-coregistration-py"><span class="std std-ref">Brain co-registration from MP2RAGE data</span></a></span></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to perform multi-atlas segmentation based on MP2RAGE data by performing ..."><div class="figure" id="id6">
+<img alt="../_images/sphx_glr_example_04_multiatlas_segmentation_thumb.png" src="../_images/sphx_glr_example_04_multiatlas_segmentation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/example_04_multiatlas_segmentation.html#sphx-glr-auto-examples-example-04-multiatlas-segmentation-py"><span class="std std-ref">Multiatlas Segmentation</span></a></span></p>
+</div>
+</div><div style='clear:both'></div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="embedded_antsreg_2d.html" class="btn btn-neutral float-right" title="embedded_antsreg_2d" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Registration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

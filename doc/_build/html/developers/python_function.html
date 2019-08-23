@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Adding a new Python function &mdash; Nighres 1.1.0b1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/adapt_sphinx_rtd.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Writing examples" href="examples.html" />
+    <link rel="prev" title="Wrapping an existing CBS Tools class" href="wrapping_cbstools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/nighres_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installing Nighres</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Nighres usage examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules and Functions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../brain/index.html">Brain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cortex/index.html">Cortex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/index.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filtering/index.html">Filtering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intensity/index.html">Intensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../io/index.html">Input/Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../laminar/index.html">Laminar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../microscopy/index.html">Microscopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../registration/index.html">Registration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shape/index.html">Shape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistics/index.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../surface/index.html">Surface</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Good to know</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../data_formats.html">Data handling and formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saving.html">Saving outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../levelsets.html">Levelsets</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer's guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setting up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wrapping_cbstools.html">Wrapping an existing CBS Tools class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Adding a new Python function</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#before-you-begin">Before you begin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#let-s-get-into-it">Let’s get into it</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Writing examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Adapting the docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr.html">Making a Pull Request</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nighres</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Adding a new Python function</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/developers/python_function.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adding-a-new-python-function">
+<span id="python-function"></span><h1>Adding a new Python function<a class="headerlink" href="#adding-a-new-python-function" title="Permalink to this headline">¶</a></h1>
+<p>Great, you want to contribute a Python function or module to Nighres!</p>
+<div class="section" id="before-you-begin">
+<h2>Before you begin<a class="headerlink" href="#before-you-begin" title="Permalink to this headline">¶</a></h2>
+<p>Please take a look at the code that is <a class="reference external" href="https://github.com/nighres/nighres/pulls">under development</a> or <a class="reference external" href="https://github.com/nighres/nighres/issues">discussion</a>. If you see something related get in touch with the developer(s) directly to combine your efforts.</p>
+<p>Take a moment to familiarise yourself with the documentation and functions, it is likely that some helper functions that you will want to use (e.g., <a class="reference external" href="http://nighres.readthedocs.io/en/latest/io/index.html">I/O</a>) have already been coded and tested.</p>
+</div>
+<div class="section" id="let-s-get-into-it">
+<h2>Let’s get into it<a class="headerlink" href="#let-s-get-into-it" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Follow the steps described in <a class="reference internal" href="setup.html#set-up"><span class="std std-ref">Setting up</span></a></p>
+</li>
+<li><p class="first">Decide  where to put your code</p>
+<p>If the functionality that you are adding falls within the scope of a pre-existing submodule, edit or create files within the submodule. If it is entirely new (e.g., <em>statistics</em>), create a new submodule with its own dedicated subdirectory.</p>
+</li>
+<li><p class="first">Coding
+If you are creating a submodule from scratch, an easy way to start is to copy the <em>__init.py__</em> and initial import statements from an existing module.</p>
+<p>Please code <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8 compliant</a>, best to use a Python linter in your editor.</p>
+<p>Please keep within our <a class="reference internal" href="docs.html#adapt-docs"><span class="std std-ref">documentation guidelines</span></a>.</p>
+<p>Leave plenty of comments in your code so that others can understand and possibly adapt your code later.</p>
+<p>Use the standard <a class="reference external" href="http://nighres.readthedocs.io/en/latest/io/index.html">I/O interfaces</a> wherever possible but also fee free to add additional I/O functionality as necessary.</p>
+<p>Test you code internally. We aim to add unittests in the future, feel free to make a start on that.</p>
+</li>
+<li><p class="first"><a class="reference internal" href="examples.html#examples"><span class="std std-ref">Write an example</span></a> showcasing your new function</p>
+</li>
+<li><p class="first">To get your code into the Nighres master follow <a class="reference internal" href="docs.html#adapt-docs"><span class="std std-ref">Adapting the docs</span></a> and <a class="reference internal" href="pr.html#make-pr"><span class="std std-ref">Making a Pull Request</span></a></p>
+</li>
+<li><p class="first">Pat yourself on the back, you have now joined the Nighres developer community!</p>
+</li>
+</ol>
+<div class="admonition-a-word-on-dependencies admonition">
+<p class="first admonition-title">A word on dependencies</p>
+<p class="last">One of Python’s strengths are the many different packages with specific functionalities. We try to keep the dependencies for Nighres as slim as possible, so please keep that in mind while you are coding. For example, if you need to perform a correlation and would normally use scipy.stats.pearsonr maybe you can get by with numpy.coeff (numpy is already a dependency, scipy isn’t). If additional packages are required, they should be pip installable and potentially relevant to other functionality that may be coded in the future.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Writing examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="wrapping_cbstools.html" class="btn btn-neutral float-left" title="Wrapping an existing CBS Tools class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Nighres authors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
